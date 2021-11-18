@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
   
+  /**
+   * Initialization of variables as empty and writing strict mode
+   */
   input:string = '';
   result:string = '';
   
@@ -15,9 +18,18 @@ export class BodyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+     * pressNum is used to take input from the users only string
+     * other than string it doesn't allow to enter in the calci
+     * @params num as a String
+     * @returns Number 
+     * 
+     * */  
   pressNum(num: string) {
     
-    //Do Not Allow . more than once
+    /**
+     * Do Not Allow (.) more than once
+     * */
     if (num==".") {
       if (this.input !="" ) {
  
@@ -43,7 +55,12 @@ export class BodyComponent implements OnInit {
     this.calcAnswer();
   }
  
- 
+  /**
+     * getLastOperand is used to not allow more than one operator
+     * @params String
+     * @returns boolean
+     * 
+     * */
   getLastOperand() {
     let pos:number;
     console.log(this.input)
@@ -55,7 +72,13 @@ export class BodyComponent implements OnInit {
     return this.input.substr(pos+1)
   }
  
- 
+
+  /**
+     * getLastOperand is used to donot allow more than one operator
+     * @params op as string
+     * @returns boolean
+     * 
+     * */
   pressOperator(op: string) {
  
     //Do not allow operators more than once
@@ -68,29 +91,47 @@ export class BodyComponent implements OnInit {
     this.calcAnswer();
   }
  
- 
+  /**
+     * clear is used to delete the last value in the string if it is not null
+     * @params string
+     * @returns boolean
+     * 
+     * */
   clear() {
     if (this.input !="" ) {
       this.input=this.input.substr(0, this.input.length-1)
     }
   }
  
+  /**
+     * allclear is used to delete the all values in the string if it is not null 
+     * @params string
+     * @returns boolean
+     * 
+     * */
   allClear() {
     this.result = '';
     this.input = '';
   }
  
+  /**
+     * calcAnswer() is used to calculate the mathematical operations 
+     * @params String
+     * @returns String
+     * 
+     * */
   calcAnswer() {
     let formula = this.input;
  
     let lastKey = formula[formula.length - 1];
- 
+    
     if (lastKey === '.')  {
       formula=formula.substr(0,formula.length - 1);
     }
  
     lastKey = formula[formula.length - 1];
- 
+    
+    // if the last value any one of these operator it should be return same value before the operator
     if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+' || lastKey === '.')  {
       formula=formula.substr(0,formula.length - 1);
     }
@@ -98,7 +139,16 @@ export class BodyComponent implements OnInit {
     console.log("Formula " +formula);
     this.result = eval(formula);
   }
- 
+  
+  /**
+     * getAnswer() is used to get the answer and it will call the calcAnswer() 
+     * method then it perform all above operations, if the input should display the result
+     * if the input is 0 then input should display empty or null
+     *  
+     * @params string
+     * @returns boolean
+     * 
+     * */
   getAnswer() {
     this.calcAnswer();
     this.input = this.result;
