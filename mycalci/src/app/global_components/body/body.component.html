@@ -1,39 +1,50 @@
-<div class="calci">
-    <form name="form1">
-        <div class="display">
-            <input type="text" name="answer" class="screen">
-        </div>
-        <div class="keys">
-        <div class="rows">
-            <input type="button"  value="C" onclick="form1.answer.value=''">
-            <input type="button" class="operator" value="Del" onclick="form1.answer.value=form1.answer.value.substring(0,form1.answer.value.length*1-1)">
-            <input type="button" class="operator" value="%" onclick="form1.answer.value+='%'">
-            <input type="button" class="operator" value="/" onclick="form1.answer.value+='/'">
-        </div>
-        <div class="rows">
-            <input type="button" class="btnDesign" value="7" onclick="form1.answer.value+='7'">
-            <input type="button" class="btnDesign" value="8" onclick="form1.answer.value+='8'">
-            <input type="button" class="btnDesign" value="9" onclick="form1.answer.value+='9'">
-            <input type="button" class="operator" value="" onclick="form1.answer.value+=''">
-        </div>
-        <div class="rows">
-            <input type="button" class="btnDesign" value="4" onclick="form1.answer.value+='4'">
-            <input type="button" class="btnDesign" value="5" onclick="form1.answer.value+='5'">
-            <input type="button" class="btnDesign" value="6" onclick="form1.answer.value+='6'">
-            <input type="button" class="operator" value="-" onclick="form1.answer.value+='-'">
-        </div>
-        <div class="rows">
-            <input type="button" class="btnDesign" value="1" onclick="form1.answer.value+='1'">
-            <input type="button" class="btnDesign" value="2" onclick="form1.answer.value+='2'">
-            <input type="button" class="btnDesign" value="3" onclick="form1.answer.value+='3'">
-            <input type="button" class="operator" value="+" onclick="form1.answer.value+='+'">
-        </div>
-        <div class="rows">
-            <input type="button" id="zero" value="0" onclick="form1.answer.value+='0'">
-            <input type="button" class="btnDesign" value="00" onclick="form1.answer.value+='00'">
-            <input type="button" class="operator" value="." onclick="form1.answer.value+='.'">
-            <input type="button" class="result" value="=" onclick="form1.answer.value=eval(form1.answer.value)">
-        </div>
-        </div>
-    </form>
-</div>
+
+<div class="container-fluid">
+ 
+    <div class="jumbotron col-sm-4 p-2 m-0 bg-inverse center">
+   
+      <!-- <h1 class="text-center">Calculator</h1> -->
+   
+      <!-- Displays the Input -->
+      <h3>Input</h3>
+      <div class="input-group input-group-sm col-sm-12 m-0 p-0">
+        <div class="col-sm-12 form-control text-lg-right" type="text">{{input}}</div>
+      </div>
+   
+      <!-- Displays the Results -->
+      <h3>Result</h3>
+      <div class="input-group input-group-sm col-sm-12 m-0 p-0">
+        <div class="form-control text-sm-right" type="text">{{result}}</div>
+      </div>
+   
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-danger col-sm-6" type="button" (click)="allClear()">C</button>
+        <button class="btn btn-warning col-sm-3" type="button" (click)="clear()">x</button>
+        <button class="btn btn-secondary col-sm-3" type="button" (click)="pressOperator('/')">/</button>
+      </div>
+   
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('7')">7</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('8')">8</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('9')">9</button>
+        <button class="btn btn-lg btn-secondary col-sm-3 p-1" type="button" (click)="pressOperator('*')">X</button>
+      </div>
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('4')">4</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('5')">5</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('6')">6</button>
+        <button class="btn btn-lg btn-secondary col-sm-3 p-1" type="button" (click)="pressOperator('-')">-</button>
+      </div>
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('1')">1</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('2')">2</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('3')">3</button>
+        <button class="btn btn-lg btn-secondary col-sm-3 p-1" type="button" (click)="pressOperator('+')">+</button>
+      </div>
+      <div class="col-sm-12 p-1 m-0">
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('.')">.</button>
+        <button class="btn btn-lg btn-outline-secondary col-sm-3 p-1" type="button" (click)="pressNum('0')">0</button>
+        <button class="btn btn-lg btn-success col-sm-6 p-1" type="button" (click)="getAnswer()">=</button>
+      </div>
+   
+    </div>
